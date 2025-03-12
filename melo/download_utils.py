@@ -46,6 +46,7 @@ def load_or_download_config(locale, use_hf=True, config_path=None):
         language = locale.split('-')[0].upper()
         if use_hf:
             assert language in LANG_TO_HF_REPO_ID
+            print(f"downloading config for {language} {LANG_TO_HF_REPO_ID[language]}")
             config_path = hf_hub_download(repo_id=LANG_TO_HF_REPO_ID[language], filename="config.json")
         else:
             assert language in DOWNLOAD_CONFIG_URLS
@@ -57,6 +58,7 @@ def load_or_download_model(locale, device, use_hf=True, ckpt_path=None):
         language = locale.split('-')[0].upper()
         if use_hf:
             assert language in LANG_TO_HF_REPO_ID
+            print(f"downloading config for {language} {LANG_TO_HF_REPO_ID[language]}")
             ckpt_path = hf_hub_download(repo_id=LANG_TO_HF_REPO_ID[language], filename="checkpoint.pth")
         else:
             assert language in DOWNLOAD_CKPT_URLS
